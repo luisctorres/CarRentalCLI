@@ -1,6 +1,7 @@
 package com.careerdevs;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RentalService {
 
@@ -21,9 +22,13 @@ public class RentalService {
         carStorage.add(1, hondaAccord);
         carStorage.add(2, chevyImpala);
 
-
-
+        System.out.println("Available Cars: " + carStorage);
+//        System.out.println("Available Cars");
+//        for (int i = 0; i < carStorage.size(); i++) {
+//            System.out.println(Arrays.toString(carStorage.get(i)));
+//        }
     }
+
 
 
 
