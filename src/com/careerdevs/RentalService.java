@@ -29,7 +29,7 @@ public class RentalService {
 
         System.out.println("Available Cars: ");
         for (int i = 0; i < availableCars.size(); i++) {
-            System.out.println(availableCars.get(i).make + " " + availableCars.get(i).model);
+            System.out.println(i+1 + ") " +  availableCars.get(i).make + " " + availableCars.get(i).model);
         }
 
 
