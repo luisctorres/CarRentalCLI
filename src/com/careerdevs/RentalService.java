@@ -6,9 +6,6 @@ import java.util.Scanner;
 
 public class RentalService {
 
-    //Scanner
-    public Scanner userMenuInput = new Scanner(System.in);
-
     public static void main(String[] args) {
         //Print Greeting
         System.out.println("Welcome to the Car Rental CLI");
@@ -32,6 +29,10 @@ public class RentalService {
             System.out.println(i+1 + ") " +  availableCars.get(i).make + " " + availableCars.get(i).model);
         }
 
+        System.out.println("Please select from available vehicles");
+        int userSelection = UI.userMenuInput.nextInt()-1;
+        System.out.println("You have selected a: ");
+        System.out.println(availableCars.get(userSelection));
 
     }
 }
