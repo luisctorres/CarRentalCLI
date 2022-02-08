@@ -35,10 +35,19 @@ public class RentalService {
         System.out.println(availableCars.get(userSelection));
 
     }
+
+
+        private static void mainMenu() {
+
+    }
+
+        private static void rentalMenu() {
+
+    }
+
+        private static void returnMenu() {
+
+    }
 }
 
 
-//To-do
-// 1) Need to make a mainMenu() Method
-// 2) need to ask user for their choice
-// 3) Once selection is made. Move car to rented ArrayList and change isRented (Property?) to = True
