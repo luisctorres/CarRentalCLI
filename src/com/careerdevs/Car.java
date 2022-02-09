@@ -12,4 +12,33 @@ public class Car {
         this.isRented = isRented;
     }
 
+    public String getMake() {
+        return make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public String getName() {
+        return make + " " + model;
+    }
+
+    public boolean isRented() {
+        return isRented;
+    }
+
+    public void setRented(Boolean rented) {
+        isRented = rented;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", isRented=" + isRented +
+                '}';
+    }
 }
+
