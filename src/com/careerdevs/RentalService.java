@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class RentalService {
+public class RentalService<userInput> {
 
     private static ArrayList<Car> carStorage;
 
@@ -35,6 +35,18 @@ public class RentalService {
 
 
         }
+
+        int userInput = UI.readInt("", 1,  3);
+        switch(userInput){
+            case rentalMenu:
+                rentalMenu();
+                break;
+            case returnMenu:
+                returnMenu();
+                break;
+            case 3:
+                break;
+         }
 
         private static ArrayList<Car> getAvailableCars() {
             return carStorage.stream().filter(car -> !car.isRented()).collect(Collectors.toCollection(ArrayList::new));
