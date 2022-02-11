@@ -13,7 +13,7 @@ public class RentalService<userInput> {
         //Print Greeting
         System.out.println("Welcome to the Car Rental CLI");
         initializeCarStorage();
-        rentalMenu();
+        mainMenu();
 
 
     }
@@ -36,17 +36,7 @@ public class RentalService<userInput> {
 
         }
 
-        int userInput = UI.readInt("", 1,  3);
-        switch(userInput){
-            case rentalMenu:
-                rentalMenu();
-                break;
-            case returnMenu:
-                returnMenu();
-                break;
-            case 3:
-                break;
-         }
+
 
         private static ArrayList<Car> getAvailableCars() {
             return carStorage.stream().filter(car -> !car.isRented()).collect(Collectors.toCollection(ArrayList::new));
@@ -54,7 +44,17 @@ public class RentalService<userInput> {
 
 
         private static void mainMenu() {
-
+            int userInput = UI.readInt("Please select a menu option: ", 1,  3);
+            switch(userInput){
+                case 1:
+                    rentalMenu();
+                    break;
+                case 2:
+                    returnMenu();
+                    break;
+                case 3:
+                    break;
+            }
 
     }
 

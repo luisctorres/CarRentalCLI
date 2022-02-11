@@ -1,9 +1,9 @@
 package com.careerdevs;
 
 public class Car {
-    public String make;
-    public String model;
-    public Boolean isRented;
+    private String make;
+    private String model;
+    private Boolean isRented;
 
     //constructor
     public Car(String make, String model, Boolean isRented) {
