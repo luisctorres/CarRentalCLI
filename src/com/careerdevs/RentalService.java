@@ -44,7 +44,7 @@ public class RentalService<userInput> {
 
 
         private static void mainMenu() {
-            int userInput = UI.readInt("Please select a menu option: ", 1,  3);
+            int userInput = UI.readInt("Please select a menu option: \n1)Rental Menu \n2)Return Menu \n3)Exit", 1,  3);
             switch(userInput){
                 case 1:
                     rentalMenu();
@@ -67,10 +67,10 @@ public class RentalService<userInput> {
                 System.out.println(i+1 + ") " +  availableCars.get(i).getName());
             }
 
-            System.out.println("Please select from available vehicles");
             int userSelection = UI.readInt("Please select from available vehicles", 1, 3);
             System.out.println("You have selected a: ");
             System.out.println(availableCars.get(userSelection).getName());
+
     }
 
         private static void returnMenu() {

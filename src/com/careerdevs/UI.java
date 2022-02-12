@@ -10,7 +10,7 @@ public class UI {
     public static int readInt (String question, int min, int max) {
         while (true) {
             try {
-                System.out.println(question + "Select a number");
+                System.out.println(question);
                 int userSelect = userMenuInput.nextInt();
                 if (userSelect >= min && userSelect <= max) {
                     return userSelect;
