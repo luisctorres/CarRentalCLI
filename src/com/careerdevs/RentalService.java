@@ -56,6 +56,7 @@ public class RentalService<userInput> {
                     break;
             }
 
+
     }
 
         private static void rentalMenu() {
