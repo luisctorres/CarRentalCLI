@@ -71,9 +71,15 @@ public class RentalService<userInput> {
             System.out.println("You have selected a: ");
             System.out.println(availableCars.get(userSelection).getName());
 
+            //Need to add rented car to rentedCars array and change isRented status
+
     }
 
         private static void returnMenu() {
+
+            System.out.println("Would you like to: \n1) Return Vehicle \n2) Return to previous menu");
+
+            //If customer chooses to return vehicle. Move to availableCars array and change isRented status.
 
     }
 }
