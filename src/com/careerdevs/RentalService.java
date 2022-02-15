@@ -1,8 +1,7 @@
 package com.careerdevs;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+
 import java.util.stream.Collectors;
 
 public class RentalService<userInput> {
@@ -24,9 +23,9 @@ public class RentalService<userInput> {
             carStorage = new ArrayList<>();
 
             //Call constructor to create instances of Car
-            Car toyotaCamry = new Car("Toyota", "Camry", false);
-            Car hondaAccord = new Car("Honda", "Accord", false);
-            Car chevyImpala = new Car("Chevy", "Impala", false);
+            Car toyotaCamry = new Car("Toyota", "Camry", true);
+            Car hondaAccord = new Car("Honda", "Accord", true);
+            Car chevyImpala = new Car("Chevy", "Impala", true);
 
             //adding all cars into carStorage
             carStorage.add(0, toyotaCamry);
@@ -35,13 +34,6 @@ public class RentalService<userInput> {
 
 
         }
-
-
-
-        private static ArrayList<Car> getAvailableCars() {
-            return carStorage.stream().filter(car -> !car.isRented()).collect(Collectors.toCollection(ArrayList::new));
-        }
-
 
         private static void mainMenu() {
             int userInput = UI.readInt("Please select a menu option: \n1)Rental Menu \n2)Return Menu \n3)Exit", 1,  3);
@@ -59,28 +51,55 @@ public class RentalService<userInput> {
 
     }
 
-        private static void rentalMenu() {
+
+    private static ArrayList<Car> getAvailableCars() {
+        return carStorage.stream().filter(car -> !car.isRented()).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    private static void rentalMenu() {
 
             ArrayList<Car> availableCars = getAvailableCars();
 
-            System.out.println("Available Cars: ");
+            System.out.println("Available vehicles: ");
             for (int i = 0; i < availableCars.size(); i++) {
                 System.out.println(i+1 + ") " +  availableCars.get(i).getName());
             }
 
-            int userSelection = UI.readInt("Please select from available vehicles", 1, 3);
-            System.out.println("You have selected a: ");
+            int userSelection = UI.readInt("Please select from available vehicles", 1, 3)-1;
+            System.out.println("Thanks, You've selected a: ");
             System.out.println(availableCars.get(userSelection).getName());
 
             //Need to add rented car to rentedCars array and change isRented status
-
+            availableCars.get(userSelection).setRented(true);
+            //return to main menu
+            mainMenu();
     }
 
-        private static void returnMenu() {
+    private static ArrayList<Car> getRentedCars() {
+        return carStorage.stream().filter(Car::isRented).collect(Collectors.toCollection(ArrayList::new));
+    }
 
-            System.out.println("Would you like to: \n1) Return Vehicle \n2) Return to previous menu");
+    private static void returnMenu() {
 
-            //If customer chooses to return vehicle. Move to availableCars array and change isRented status.
+            ArrayList<Car> rentedCars = getRentedCars();
+
+            int userSelection = UI.readInt("Would you like to: \n1) Return Vehicle \n2) Return to previous menu", 1, 2);
+
+            switch (userSelection) {
+                case 1 -> {
+                    //Case1 is the return vehicle sub-menu
+                    System.out.println();
+                    for (int i = 0; i < rentedCars.size(); i++) {
+                        System.out.println(i + 1 + ") " + rentedCars.get(i).getName());
+                    }
+                    int userReturnSelection = UI.readInt("Which Vehicle are you returning today?: ", 1, 3)-1;
+                    System.out.println("Thanks for returning the: ");
+                    System.out.println(rentedCars.get(userReturnSelection).getName());
+                    rentedCars.get(userReturnSelection).setRented(false);
+                    mainMenu();
+                }
+                case 2 -> mainMenu();
+            }
 
     }
 }

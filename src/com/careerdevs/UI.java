@@ -12,6 +12,7 @@ public class UI {
             try {
                 System.out.println(question);
                 int userSelect = userMenuInput.nextInt();
+                userMenuInput.nextLine();
                 if (userSelect >= min && userSelect <= max) {
                     return userSelect;
                 }
