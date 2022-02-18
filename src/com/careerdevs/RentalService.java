@@ -13,8 +13,6 @@ public class RentalService<userInput> {
         System.out.println("Welcome to the Car Rental CLI");
         initializeCarStorage();
         mainMenu();
-
-
     }
 
 
@@ -31,8 +29,6 @@ public class RentalService<userInput> {
             carStorage.add(0, toyotaCamry);
             carStorage.add(1, hondaAccord);
             carStorage.add(2, chevyImpala);
-
-
         }
 
         private static void mainMenu() {
@@ -60,7 +56,7 @@ public class RentalService<userInput> {
 
             ArrayList<Car> availableCars = getAvailableCars();
 
-            System.out.println("Available vehicles: ");
+            System.out.println("Available vehicles for rent: ");
             for (int i = 0; i < availableCars.size(); i++) {
                 System.out.println(i+1 + ") " +  availableCars.get(i).getName());
             }
@@ -93,7 +89,7 @@ public class RentalService<userInput> {
                         System.out.println(i + 1 + ") " + rentedCars.get(i).getName());
                     }
                     int userReturnSelection = UI.readInt("Which Vehicle are you returning today?: ", 1, 3)-1;
-                    System.out.println("Thanks for returning the: ");
+                    System.out.println("Thank you for returning the: ");
                     System.out.println(rentedCars.get(userReturnSelection).getName());
                     rentedCars.get(userReturnSelection).setRented(false);
                     mainMenu();
