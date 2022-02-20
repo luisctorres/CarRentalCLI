@@ -56,19 +56,27 @@ public class RentalService<userInput> {
 
             ArrayList<Car> availableCars = getAvailableCars();
 
-            System.out.println("Available vehicles for rent: ");
-            for (int i = 0; i < availableCars.size(); i++) {
-                System.out.println(i+1 + ") " +  availableCars.get(i).getName());
+            //if no vehicles available. inform user and return to mainMenu()
+            if (getAvailableCars().size() == 0) {
+                System.out.println("No vehicles currently available to rent");
+                System.out.println("Returning to main menu...");
+                mainMenu();
+            } else {
+                System.out.println("Available vehicles for rent: ");
+                for (int i = 0; i < availableCars.size(); i++) {
+                    System.out.println(i+1 + ") " +  availableCars.get(i).getName());
+                }
+
+                int userSelection = UI.readInt("Please select from available vehicles", 1, 3)-1;
+                System.out.println("Thanks, You've selected a: ");
+                System.out.println(availableCars.get(userSelection).getName());
+
+                //Need to add rented car to rentedCars array and change isRented status
+                availableCars.get(userSelection).setRented(true);
+                //return to main menu
+                mainMenu();
             }
 
-            int userSelection = UI.readInt("Please select from available vehicles", 1, 3)-1;
-            System.out.println("Thanks, You've selected a: ");
-            System.out.println(availableCars.get(userSelection).getName());
-
-            //Need to add rented car to rentedCars array and change isRented status
-            availableCars.get(userSelection).setRented(true);
-            //return to main menu
-            mainMenu();
     }
 
     private static ArrayList<Car> getRentedCars() {
